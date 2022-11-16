@@ -1,0 +1,87 @@
+1. sub-instruction loss + split loss
+2. split mask as the input
+3. modify the sub-instruction loss with partial instruction.
+
+
+
+
+
+
+if "/" in split:
+new_item = dict(item)
+new_item['instr_id'] = item['path_id']
+new_item['instructions'] = item['instructions']
+new_item['instr_encoding'] = item['instr_enc']
+
+new_item['split_target'] = item['split_target']
+new_item['sub_instr_target'] = item['sub_instr_target']
+if new_item['instr_encoding'] is not None:  # Filter the wrong data
+self.data.append(new_item)
+scans.append(item['scan'])
+
+else:
+# Split multiple instructions into separate entries
+for j, instr in enumerate(item['instructions']):
+try:
+    new_item = dict(item)
+    new_item['instr_id'] = '%s_%d' % (item['path_id'], j)
+    new_item['instructions'] = instr
+
+    #BERT tokenizer
+    instr_tokens = tokenizer.tokenize(instr)
+    padded_instr_tokens, num_words = pad_instr_tokens(instr_tokens, args.maxInput)
+    new_item['instr_encoding'] = tokenizer.convert_tokens_to_ids(padded_instr_tokens)
+    
+    new_item['sub_instr'] = []
+    for each_sub in new_item['split_index']:
+        tmp_sub = []
+        for each_index in each_sub:
+            start = each_index[0]
+            end = each_index[1]
+            tmp_sub.append(instr_tokens[start:end])
+        new_item['sub_instr'].append(tmp_sub)
+        
+    #Split target and sub-instr target
+    split_dict = {}
+    sub_instr_dict = {}
+    
+    if 'chunk_view' in new_item:
+        for view_id, each_view in enumerate(new_item['chunk_view'][j]):
+            start  = each_view[0]-1
+            end = each_view[1] - 1
+            split_index = new_item['split_index'][j]
+            sub_instr = new_item['sub_instr'][j]
+            for viewpoint in new_item['path'][start:end+1]:
+                split_dict[viewpoint] = split_index[view_id]
+                sub_instr_dict[viewpoint] = sub_instr[view_id]
+        new_item['split_target'] = split_dict
+        new_item['sub_instr_target'] = sub_instr_dict
+        #assert len(split_dict) == len(new_item['path'])
+    
+    if new_item['instr_encoding'] is not None:  # Filter the wrong data
+        self.data.append(new_item)
+        scans.append(item['scan'])
+except IndexError:
+    # sometimes there are cases that more than 3 sentences
+    continue
+
+
+
+
+#######
+new_item = dict(item)
+new_item['instr_id'] = item['path_id']
+
+new_item['instructions'] = item['instructions']
+new_item['instr_encoding'] = item['instr_enc']
+if "/" in split:
+    new_item['sub_instr_target'] = item['sub_instr_target']
+else:
+    new_item['sub_instr_target'] = {}
+    for key, value in item['sub_instr_target'].items():
+        new_item['sub_instr_target'][key] = item['instr_enc']
+        
+new_item['split_target'] = item['split_target']
+if new_item['instr_encoding'] is not None:  # Filter the wrong data
+    self.data.append(new_item)
+    scans.append(item['scan'])

@@ -1,0 +1,69 @@
+1. sub-instruction loss + split loss
+2. split mask as the input
+3. modify the sub-instruction loss with partial instruction.
+
+
+
+/egr/research-hlr/joslin/r2r/data/prevalent_aug_new_fine.json: the augmented data also considers the two losses
+
+
+new_item = dict(item)
+new_item['instr_id'] = item['path_id']
+new_item['instructions'] = item['instructions']
+new_item['instr_encoding'] = item['instr_enc']
+split_dict = {}
+sub_instr_dict = {}
+
+instr_tokens = tokenizer.tokenize(item['instructions'])
+index_list = []
+start = 0
+
+new_item = dict(item)
+new_item['instr_id'] = item['path_id']
+new_item['instructions'] = item['instructions']
+new_item['instr_encoding'] = item['instr_enc']
+split_dict = {}
+sub_instr_dict = {}
+
+instr_tokens = tokenizer.tokenize(item['instructions'])
+index_list = []
+start = 0
+
+for token_id, each_token in enumerate(instr_tokens):
+    if each_token == ",":
+        end = token_id
+        tmp_list = [start, end]
+        start = end+1
+        index_list.append(tmp_list)
+index_list.append([start, token_id])
+
+for view_id, each_view in enumerate(new_item['path']):
+    split_dict[each_view] = index_list[view_id]
+    ### encoding
+    sub_instr_tokens = instr_tokens[index_list[view_id][0]: index_list[view_id][1]]
+    if len(sub_instr_tokens) <= 2:
+        sub_instr_tokens +=['.']*(3-len(sub_instr_tokens))
+    padded_sub_instr_tokens, num_words = pad_instr_tokens(sub_instr_tokens, args.maxInput)
+    sub_instr_dict[each_view] = tokenizer.convert_tokens_to_ids(padded_sub_instr_tokens)
+
+new_item['split_target'] = split_dict
+new_item['sub_instr_target'] = sub_instr_dict
+if new_item['instr_encoding'] is not None:  # Filter the wrong data
+    self.data.append(new_item)
+    scans.append(item['scan'])
+
+
+
+
+
+#######
+new_item = dict(item)
+new_item['instr_id'] = item['path_id']
+new_item['instructions'] = item['instructions']
+new_item['instr_encoding'] = item['instr_enc']
+
+new_item['split_target'] = item['split_target']
+new_item['sub_instr_target'] = item['sub_instr_target']
+if new_item['instr_encoding'] is not None:  # Filter the wrong data
+    self.data.append(new_item)
+    scans.append(item['scan'])

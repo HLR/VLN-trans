@@ -1,0 +1,48 @@
+1. sub-instruction loss + split loss
+2. split mask as the input
+3. modify split loss
+4. contrastive loss
+
+
+
+# process the augmented data.
+import copy
+new_item = copy.deepcopy(item)
+instr =  ", ".join(item['generate_instr'])+"."
+new_item['instructions'] = instr
+instr_tokens = tokenizer.tokenize(instr)
+padded_instr_tokens, num_words = pad_instr_tokens(instr_tokens, args.maxInput)
+new_item['instr_enc'] = tokenizer.convert_tokens_to_ids(padded_instr_tokens)
+del new_item['generate_instr']
+
+for key, value in item['samples'].items():
+### pos_instr_encoding
+mask = []
+pos_instr_tokens = tokenizer.tokenize(value['pos_instr'])
+if len(pos_instr_tokens) <= 2:
+    pos_instr_tokens += ["."]*(3-len(pos_instr_tokens))
+padded_pos_tokens, pos_num_words = pad_instr_tokens(pos_instr_tokens, args.maxInput)
+pos_instr_encoding = tokenizer.convert_tokens_to_ids(padded_pos_tokens)[:pos_num_words]
+new_item['samples'][key]['pos_instr_encoding'] = pos_instr_encoding
+
+### neg_instr_encoding
+neg_instr = value['neg_soft_instr'] + value['neg_hard_instr']
+new_item['samples'][key]['neg_instr_encoding'] = []
+neg_mask = []
+for n1 in range(0, 3):
+    if n1 >= len(neg_instr):
+        break
+    neg_instr_tokens = tokenizer.tokenize(neg_instr[n1])
+    if len(neg_instr_tokens) <= 2:
+        neg_instr_tokens += ["."]*(3-len(neg_instr_tokens))
+    padded_neg_tokens, neg_num_words = pad_instr_tokens(neg_instr_tokens, args.maxInput)
+    neg_instr_encoding = tokenizer.convert_tokens_to_ids(padded_neg_tokens)[:neg_num_words]
+    new_item['samples'][key]['neg_instr_encoding'].append(neg_instr_encoding)
+    neg_mask.append(neg_num_words)
+new_item['samples'][key]['mask'] = [pos_num_words] + neg_mask
+del new_item['samples'][key]['pos_instr']
+del new_item['samples'][key]['neg_soft_instr']
+del new_item['samples'][key]['neg_hard_instr']
+if new_item['instr_enc'] is not None:  # Filter the wrong data
+self.data.append(new_item)
+scans.append(item['scan'])
