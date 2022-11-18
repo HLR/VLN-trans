@@ -3,7 +3,7 @@ name=r4r_navigator
 flag="--vlnbert prevalent
       --test_only 0
       --train auglistener
-      --aug /egr/research-hlr/joslin/r2r/data/prevalent_aug_new_fine.json
+      --aug /egr/research-hlr/joslin/r2r/data/aug_new_fine.json
       --features places365
       --maxAction 15
       --batchSize 16

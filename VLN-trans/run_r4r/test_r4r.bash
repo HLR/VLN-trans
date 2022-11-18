@@ -1,10 +1,8 @@
 name=r4r_test
 
 flag="--vlnbert prevalent
-
       --submit 1
       --test_only 0
-
       --train validlistener
       --load /localscratch/zhan1624/VLN-speaker/snap/r4r_navigator/state_dict/test
       --features places365
@@ -14,7 +12,6 @@ flag="--vlnbert prevalent
       --lr 1e-5
       --iters 300000
       --optim adamW
-
       --mlWeight 0.20
       --maxInput 80
       --angleFeatSize 128
@@ -23,4 +20,3 @@ flag="--vlnbert prevalent
   
 
 mkdir -p snap/$name
-CUDA_VISIBLE_DEVICES=2 python r4r_src/train.py $flag --name $name

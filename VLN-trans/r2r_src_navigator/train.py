@@ -332,7 +332,6 @@ def train_val_augment(test_only=False):
     #feat_dict = None
     # Load the augmentation data
     aug_path = args.aug
-    aug_path1 = "/localscratch/zhan1624/VLN-speaker/r2r_src_helper4/new_fine2/MY_test_fine.json"
     # Create the training environment
     aug_env   = R2RBatch(feat_dict, batch_size=args.batchSize, splits=[aug_path], tokenizer=tok, name='aug')
     train_env = R2RBatch(feat_dict, batch_size=args.batchSize, splits=['train'], tokenizer=tok)
