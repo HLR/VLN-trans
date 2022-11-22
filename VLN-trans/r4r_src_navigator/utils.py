@@ -590,13 +590,6 @@ def ndtw_initialize():
             all_scan_ids.append(path_scan_id)
             ndtw_graph = ndtw_graphload(path_scan_id)
             ndtw_criterion[path_scan_id] = DTW(ndtw_graph)
-    ### delete later
-    test_scan = ['pa4otMbVnkk', 'wc2JMjhGNzB', 'rqfALeAoiTq', 'q9vSo1VnCiC', 'ARNzJeq3xxb', 'jtcxE69GiFV', '2t7WUuJeko7', 'WYY7iVyf5p8', 'YFuZgdQ5vWj', '5ZKStnWn8Zo', 'Vt2qJdWjCF2', 'UwV83HsGsw3', 'YVUC4YcDtcY', 'fzynW3qQPVF', 'yqstnuAEVhm', 'RPmz2sHmrrY', 'gxdoqLR6rwA', 'gYvKGZ5eRqb']
-    for each_test_id in test_scan:
-        if each_test_id not in all_scan_ids:
-            all_scan_ids.append(each_test_id)
-            ndtw_graph = ndtw_graphload(each_test_id)
-            ndtw_criterion[each_test_id] = DTW(ndtw_graph)
     return ndtw_criterion
 
 def ndtw_graphload(scan):
