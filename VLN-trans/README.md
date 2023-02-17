@@ -61,7 +61,7 @@ Please follow the instructions below to prepare the data in directories:
 
 - VLN-trans pre-train weights [pre-train initial weights for the agent](https://drive.google.com/file/d/1x0szprQKmyts9PvdvunS-trYJtEb9Qt9/view?usp=share_link)
 
--Translator pre-train weights [pre-train weights for the translator](https://drive.google.com/file/d/1ZF9yFh6axZiRCORT4vQktxTlRb2NUjBE/view?usp=share_link)
+- Translator pre-train weights [pre-train weights for the translator](https://drive.google.com/file/d/1ZF9yFh6axZiRCORT4vQktxTlRb2NUjBE/view?usp=share_link)
 
   
 
