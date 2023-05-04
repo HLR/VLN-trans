@@ -37,11 +37,11 @@ Please follow the instructions below to prepare the data in directories:
 
   
 
-### Initial weights for VLN-trans and translator
+### Initial weights for VLN-trans and Translator
 
 
-- Download the `pytorch_model.bin` from [here](https://drive.google.com/file/d/1x0szprQKmyts9PvdvunS-trYJtEb9Qt9/view).
-- Download the translator pre-train weights from [here](https://drive.google.com/file/d/1ZF9yFh6axZiRCORT4vQktxTlRb2NUjBE/view?usp=share_link).
+- VLN-trans: Download the `pytorch_model.bin` from [here](https://drive.google.com/file/d/1x0szprQKmyts9PvdvunS-trYJtEb9Qt9/view).
+- Translator: Download the pre-train weights from [here](https://drive.google.com/file/d/1ZF9yFh6axZiRCORT4vQktxTlRb2NUjBE/view?usp=share_link).
 
   
 
