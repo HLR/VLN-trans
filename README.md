@@ -39,10 +39,6 @@ Please follow the instructions below to prepare the data in directories:
 
 ### Initial weights for Rec-VLN
 
- 
-- Pre-trained weights
-
-- Download the `base-no-labels` following [this guide](https://github.com/microsoft/Oscar/blob/master/DOWNLOAD.md).
 
 - Pre-trained [PREVALENT](https://github.com/weituo12321/PREVALENT) weights
 
