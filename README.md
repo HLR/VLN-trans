@@ -37,12 +37,10 @@ Please follow the instructions below to prepare the data in directories:
 
   
 
-### Initial weights for Rec-VLN
+### Initial weights for VLN-trans
 
 
-- Pre-trained [PREVALENT](https://github.com/weituo12321/PREVALENT) weights
-
-- Download the `pytorch_model.bin` from [here](https://drive.google.com/drive/folders/1sW2xVaSaciZiQ7ViKzm_KbrLD_XvOq5y).
+- Download the `pytorch_model.bin` from [here](https://drive.google.com/file/d/1ZF9yFh6axZiRCORT4vQktxTlRb2NUjBE/view?usp=share_link).
 
   
 
@@ -52,15 +50,10 @@ Please follow the instructions below to prepare the data in directories:
 
 - VLN-trans [trained-weights](https://drive.google.com/file/d/1W7hDGTvKXeXKX-gtyKujTcYf7hpARG_b/view?usp=share_link)
 
-- VLN-trans pre-train weights[pre-train initial weights for the agent](https://drive.google.com/file/d/1x0szprQKmyts9PvdvunS-trYJtEb9Qt9/view?usp=share_link)
-
--Translator pre-train weights[pre-train weights for the translator](https://drive.google.com/file/d/1ZF9yFh6axZiRCORT4vQktxTlRb2NUjBE/view?usp=share_link)
-
   
 
 ## R2R Navigation
 
-  
 
 Please read Peter Anderson's VLN paper for the [R2R Navigation task](https://arxiv.org/abs/1711.07280).
 
