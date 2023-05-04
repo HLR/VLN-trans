@@ -77,12 +77,10 @@ bash run_translator/test_agent.bash
 
   
 
-To train the network from scratch, simply run:
+To train the network, run:
 
 ```bash
 
 bash run_translator/train_agent.bash
 
 ```
-
-The trained Navigator will be saved under `snap/`.
