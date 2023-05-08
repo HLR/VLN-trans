@@ -29,7 +29,7 @@ Please follow the instructions below to prepare the data in directories:
 
   
 
-- Translator pre-train data: [Translator pre-train data](https://drive.google.com/file/d/1RNyHIxbG67v28ll1iaZbfrIunfkjO0ps/view?usp=share_link).
+- Translator pre-train data: [Translator pre-train data](https://drive.google.com/file/d/1DfKw_ufCOFKWYoHeqvfbRnKQOFd4Pypn/view?usp=share_link).
 
   
 
