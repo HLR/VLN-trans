@@ -18,7 +18,7 @@ Please follow the instructions below to prepare the data in directories:
 - MP3D navigability graphs:  [connectivity maps](https://github.com/peteanderson80/Matterport3DSimulator/tree/master/connectivity).
 
   
-- Processed fine-grained R2R data and augmented: [Fine-grained r2r data](https://drive.google.com/file/d/1RNyHIxbG67v28ll1iaZbfrIunfkjO0ps/view?usp=share_link).
+- Processed fine-grained R2R data and augmented: [Fine-grained r2r data](https://drive.google.com/file/d/1N0fwT2vKv6Ox-dYw_38DmU1DFlJZxifq/view?usp=share_link).
 
  
 - Processed fine-grained R4R data and augmented: [Fine-grained r4r data](https://drive.google.com/file/d/1RNyHIxbG67v28ll1iaZbfrIunfkjO0ps/view?usp=share_link).
