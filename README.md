@@ -1,7 +1,7 @@
-# VLN-Trans: Translator for the Vision and Language Navigation Agent (ACL 2023)
+# VLN-Trans: Translator for the Vision and Language Navigation Agent 
 
   
-### Paper
+### Paper (ACL 2023)
 VLN-Trans (https://arxiv.org/pdf/2302.09230.pdf) 
 
 ### Installation
