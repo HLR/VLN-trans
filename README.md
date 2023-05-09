@@ -1,7 +1,8 @@
 # VLN-Trans: Translator for the Vision and Language Navigation Agent (ACL 2023)
 
   
-  
+### Paper
+VLN-Trans (https://arxiv.org/pdf/2302.09230.pdf) 
 
 ### Installation
 Install the [Matterport3D Simulator](https://github.com/peteanderson80/Matterport3DSimulator). 
