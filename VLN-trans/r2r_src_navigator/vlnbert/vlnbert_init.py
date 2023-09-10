@@ -23,8 +23,7 @@ def get_vlnbert_models(args, config=None):
 
     from vlnbert.vlnbert_PREVALENT import VLNBert
     model_class = VLNBert
-    #model_name_or_path = '/egr/research-hlr/joslin/transformer-based-model/Prevalent/pretrained_model/checkpoint-12864/pytorch_model.bin'
-    model_name_or_path = '/egr/research-hlr/joslin/pretrain/pretrained_model/checkpoint-47840'
+    model_name_or_path = 'the path of pre-train weights'
     vis_config = config_class.from_pretrained('bert-base-uncased')
     vis_config.img_feature_dim = 2048+128
     vis_config.img_feature_type = ""
